@@ -6,7 +6,7 @@ const path = require("path");
 
 const app = express();
 app.use(cors({
-  origin:["jdbc.mysql://sql7.freesqldatabase.com:3306/sql7643495"],
+  origin:["http://localhost:3000"],
   methods: ["POST","GET","DELETE"],
   credentials: true
 }));
