@@ -6,7 +6,7 @@ const path = require("path");
 
 const app = express();
 app.use(cors({
-  origin:["http://localhost:3000"],
+  origin:["https://cafee-as7o.onrender.com"],
   methods: ["POST","GET","DELETE"],
   credentials: true
 }));
