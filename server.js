@@ -6,7 +6,7 @@ const path = require("path");
 
 const app = express();
 app.use(cors({
-  origin:["https://restaurantmenu.onrendercom"],
+  origin:["https://restaurantmenu.onrender.com"],
   methods: ["POST","GET","DELETE"],
   credentials: true
 }));
