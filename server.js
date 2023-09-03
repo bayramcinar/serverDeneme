@@ -109,10 +109,10 @@ app.get(`/getProductsImg/:id`, (req, res) => {
   });
 
 
-app.get(`/getLikeNumber/:ürünID`, (req, res) => {
-    const productId = req.params.ürünID;
+app.get(`/getLikeNumber/:id`, (req, res) => {
+    const id = req.params.id;
     const sql = "SELECT likeNumber FROM üründetaylari WHERE ürünID = ?";
-    db.query(sql, [productId], (err, result) => {
+    db.query(sql, [id], (err, result) => {
         if (err) {
             return res.json({ Message: "Error getting like number.", error: err });
         }
@@ -120,10 +120,10 @@ app.get(`/getLikeNumber/:ürünID`, (req, res) => {
     });
 });
 
-app.get(`/getDislikeNumber/:ürünID`, (req, res) => {
-    const productId = req.params.ürünID;
+app.get(`/getDislikeNumber/:id`, (req, res) => {
+    const id = req.params.id;
     const sql = "SELECT dislikeNumber FROM üründetaylari WHERE ürünID = ?";
-    db.query(sql, [productId], (err, result) => {
+    db.query(sql, [id], (err, result) => {
         if (err) {
             return res.json({ Message: "Error getting like number.", error: err });
         }
@@ -131,11 +131,11 @@ app.get(`/getDislikeNumber/:ürünID`, (req, res) => {
     });
 });
 
-app.post(`/like/:ürünID`, (req, res) => {
-    const ürünID = req.params.ürünID;
+app.post(`/like/:id`, (req, res) => {
+    const id = req.params.id;
     const selectSql = "SELECT likeNumber FROM üründetaylari WHERE ürünID = ?";
     
-    db.query(selectSql, [ürünID], (err, result) => {
+    db.query(selectSql, [id], (err, result) => {
         if (err) {
             return res.json({ Message: "Error getting like number.", error: err });
         }
@@ -145,7 +145,7 @@ app.post(`/like/:ürünID`, (req, res) => {
 
         const updateSql = "UPDATE üründetaylari SET likeNumber = ? WHERE ürünID = ?";
         
-        db.query(updateSql, [updatedLikeNumber, ürünID], (err, result) => {
+        db.query(updateSql, [updatedLikeNumber, id], (err, result) => {
             if (err) {
                 return res.json({ Message: "Error updating like number.", error: err });
             }
@@ -154,11 +154,11 @@ app.post(`/like/:ürünID`, (req, res) => {
     });
 });
 
-app.post(`/dislike/:ürünID`, (req, res) => {
-    const ürünID = req.params.ürünID;
+app.post(`/dislike/:id`, (req, res) => {
+    const id = req.params.id;
     const selectSql = "SELECT dislikeNumber FROM üründetaylari WHERE ürünID = ?";
     
-    db.query(selectSql, [ürünID], (err, result) => {
+    db.query(selectSql, [id], (err, result) => {
         if (err) {
             return res.json({ Message: "Error getting like number.", error: err });
         }
@@ -168,7 +168,7 @@ app.post(`/dislike/:ürünID`, (req, res) => {
 
         const updateSql = "UPDATE üründetaylari SET dislikeNumber = ? WHERE ürünID = ?";
         
-        db.query(updateSql, [updatedDislikeNumber, ürünID], (err, result) => {
+        db.query(updateSql, [updatedDislikeNumber, id], (err, result) => {
             if (err) {
                 return res.json({ Message: "Error updating like number.", error: err });
             }
