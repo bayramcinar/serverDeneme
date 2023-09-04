@@ -636,7 +636,7 @@ app.delete('/silCart/:masaID', (req, res) => {
 
 
 app.get("/getAllTables", (req, res) => {
-  const sql = "SELECT id FROM masalar";
+  const sql = "SELECT id,isActive FROM masalar";
   db.query(sql, (err, result) => {
       if (err) {
           return res.json({ Message: "Error inserting product.", error: err });
@@ -1002,6 +1002,38 @@ app.get("/getAllCategoryID", (req, res) => {
 
 });
 
+app.get(`/getTableActive/:id`, (req, res) => {
+  const id = req.params.id;
+  const sql = "SELECT isActive FROM masalar WHERE id = ?";
+  db.query(sql,[id],(err,result)=>{
+        if (err) {
+      return res.json({ Message: "Error getting image.", error: err });
+    }
+    return res.json(result);
+  })
+});
+
+app.post(`/setActive/:id`, (req, res) => {
+  const id = req.params.id;
+  const sql = "UPDATE masalar SET isActive = 1 WHERE id = ?";
+  db.query(sql,[id],(err,result)=>{
+        if (err) {
+      return res.json({ Message: "Error getting image.", error: err });
+    }
+    return res.json(result);
+  })
+});
+
+app.post(`/setDeactive/:id`, (req, res) => {
+  const id = req.params.id;
+  const sql = "UPDATE masalar SET isActive = 0 WHERE id = ?";
+  db.query(sql,[id],(err,result)=>{
+        if (err) {
+      return res.json({ Message: "Error getting image.", error: err });
+    }
+    return res.json(result);
+  })
+});
 
 app.listen(3306,()=>{
     console.log("server is started");
