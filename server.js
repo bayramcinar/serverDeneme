@@ -6,7 +6,7 @@ const path = require("path");
 
 const app = express();
 app.use(cors({
-  origin:["https://democafe.onrender.com"],
+  origin:["https://cafeapp-wtla.onrender.com"],
   methods: ["POST","GET","DELETE"],
   credentials: true
 }));
