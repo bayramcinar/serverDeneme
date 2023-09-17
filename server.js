@@ -14,10 +14,10 @@ app.use(express.json());
 app.use(express.static("public"));
 
 const db = mysql.createConnection({
-    host:"sql7.freesqldatabase.com",
-    user:"sql7643495",
-    password:"P1gXaQdrwk",
-    database:"sql7643495"
+    host:"sql8.freesqldatabase.com",
+    user:"sql8647007",
+    password:"HcTKTRfD3X",
+    database:"sql8647007"
 })
 
 const storage = multer.diskStorage({
